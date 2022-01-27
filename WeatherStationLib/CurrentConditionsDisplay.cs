@@ -6,19 +6,6 @@ namespace WeatherStationLib
     {
         private double temp;
         private double humidity;
-        // private WeatherData data;
-
-        /// <summary>
-        /// Construct the display object using the specified weatherData object, and subscribe that object for data changes.
-        /// </summary>
-        /// <param name="weatherData">The WeatherData object to which the display subscribe</param>
-        // public CurrentConditionsDisplay(WeatherData weatherData)
-        // {
-        //     this.data = weatherData;
-        //     data.registerObserver(this);
-        // }
-
-
 
         // Implement interfaces methods
         public void update(object sender, MeasurementsChangedEventsArgs e)
