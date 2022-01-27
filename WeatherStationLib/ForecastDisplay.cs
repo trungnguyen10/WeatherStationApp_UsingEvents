@@ -2,24 +2,17 @@ using System;
 
 namespace WeatherStationLib
 {
-    public class ForecastDisplay : IDisplayElement
+    public class ForecastDisplay : IObserver, IDisplayElement
     {
         private double currentPressure = 29.92;
         private double previousPressure;
-        private WeatherData data;
 
-        // public ForecastDisplay(WeatherData data)
-        // {
-        //     this.data = data;
-        //     data.registerObserver(this);
-        // }
-
-        // public void update()
-        // {
-        //     previousPressure = currentPressure;
-        //     currentPressure = data.Pressure;
-        //     display();
-        // }
+        public void update(Object sender, MeasurementsChangedEventsArgs e)
+        {
+            previousPressure = currentPressure;
+            currentPressure = e.newData.Pressure;
+            display();
+        }
 
         public void display()
         {

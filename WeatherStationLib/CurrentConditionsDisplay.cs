@@ -23,12 +23,9 @@ namespace WeatherStationLib
         // Implement interfaces methods
         public void update(object sender, MeasurementsChangedEventsArgs e)
         {
-            if (temp != e.newData.Temperature && humidity != e.newData.Humidity)
-            {
                 temp = e.newData.Temperature;
                 humidity = e.newData.Humidity;
                 display();
-            }
         }
 
         public void display()

@@ -16,17 +16,17 @@ namespace WeatherStationLib
         public double Temperature
         {
             get { return temperature; }
-            set { temperature = value; OnMeasurementsChanged(new MeasurementsChangedEventsArgs(this)); }
+            private set { if (temperature != value) temperature = value; }
         }
         public double Humidity
         {
             get { return humidity; }
-            set { humidity = value; OnMeasurementsChanged(new MeasurementsChangedEventsArgs(this)); }
+            private set { if (humidity != value) humidity = value; }
         }
         public double Pressure
         {
             get { return pressure; }
-            set { pressure = value; OnMeasurementsChanged(new MeasurementsChangedEventsArgs(this)); }
+            private set { if (pressure != value) pressure = value; }
         }
 
         // create a event member
@@ -43,13 +43,13 @@ namespace WeatherStationLib
         //     ((ISubject)this).notifyObservers();
         // }
 
-        // public void setMeasurements(double temperature, double humidity, double pressure)
-        // {
-        //     Temperature = temperature;
-        //     Humidity = humidity;
-        //     Pressure = pressure;
-        //     measurementsChanged();
-        // }
+        public void setMeasurements(double temperature, double humidity, double pressure)
+        {
+            Temperature = temperature;
+            Humidity = humidity;
+            Pressure = pressure;
+            OnMeasurementsChanged(new MeasurementsChangedEventsArgs(this));
+        }
 
     }
 }

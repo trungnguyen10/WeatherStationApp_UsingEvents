@@ -2,16 +2,9 @@ using System;
 
 namespace WeatherStationLib
 {
-    public class HeatIndexDisplay : IDisplayElement
+    public class HeatIndexDisplay : IObserver, IDisplayElement
     {
         private double index;
-        WeatherData data;
-
-        // public HeatIndexDisplay(WeatherData data)
-        // {
-        //     this.data = data;
-        //     data.registerObserver(this);
-        // }
 
         private double heatIndex(double t, double rh)
         {
@@ -26,13 +19,13 @@ namespace WeatherStationLib
             return index;
         }
 
-        // public void update()
-        // {
-        //     double temp = data.Temperature;
-        //     double humidity = data.Humidity;
-        //     index = heatIndex(temp, humidity);
-        //     display();
-        // }
+        public void update(object sender, MeasurementsChangedEventsArgs e)
+        {
+            double temp = e.newData.Temperature;
+            double humidity = e.newData.Humidity;
+            index = heatIndex(temp, humidity);
+            display();
+        }
 
         public void display()
         {

@@ -10,29 +10,22 @@ namespace WeatherStationApp
             WeatherData data = new WeatherData();
 
             CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay();
+            StatisticDisplay statisticDisplay = new StatisticDisplay();
+            ForecastDisplay forecastDisplay = new ForecastDisplay();
+            HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay();
             data.MeasurementsChanged += currentDisplay.update;
-            // StatisticDisplay statisticDisplay = new StatisticDisplay(data);
-            // ForecastDisplay forecastDisplay = new ForecastDisplay(data);
-            // HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(data);
+            data.MeasurementsChanged += statisticDisplay.update;
+            data.MeasurementsChanged += forecastDisplay.update;
+            data.MeasurementsChanged += heatIndexDisplay.update;
 
             Console.WriteLine("First reading:");
-            data.Temperature = 80;
-            data.Humidity = 65;
-            data.Pressure = 30.4;
-            
+            data.setMeasurements(80, 65, 30.4);
             Console.WriteLine();
-
             Console.WriteLine("Second reading:");
-            data.Temperature = 82;
-            data.Humidity = 70;
-            data.Pressure = 29.2;
-            
+            data.setMeasurements(82, 70, 29.2);
             Console.WriteLine();
-
             Console.WriteLine("Third reading:");
-            data.Temperature = 78;
-            data.Humidity = 90;
-            data.Pressure = 29.2;
+            data.setMeasurements(78, 90, 29.2);
         }
     }
 }
