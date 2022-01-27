@@ -9,10 +9,7 @@ namespace WeatherStationLib
         private double temperature;
         private double humidity;
         private double pressure;
-
-
-        // Properties
-        private List<IObserver> observers = new List<IObserver>();
+        
         public double Temperature
         {
             get { return temperature; }
@@ -37,11 +34,6 @@ namespace WeatherStationLib
         {
             if (MeasurementsChanged != null) MeasurementsChanged(this, e);
         }
-
-        // public void measurementsChanged()
-        // {
-        //     ((ISubject)this).notifyObservers();
-        // }
 
         public void setMeasurements(double temperature, double humidity, double pressure)
         {
